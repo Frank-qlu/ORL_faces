@@ -1,6 +1,6 @@
 <h1># ORL_faces</h1>
 <h4>ORL人脸识别不同算法的实现，用到了scikit-learn,tensorflow等，任选5张训练，5张测试。因为每次训练随机挑选，所以每次输出识别率有偏差</h4>
-<table >
+<table border="1">
 <tr>
 <th>算法</th>
 <th>识别率</th>
