@@ -1,9 +1,11 @@
 #author：(李志鹏)Frank Lee
+#2019 年3 月22日
 import numpy as np
 import tensorflow as tf
+
 import random,os,cv2,glob
 from sklearn.decomposition import PCA
-import hypertools as hyp
+#import hypertools as hyp
 import time
 import pywt
 import matplotlib.pyplot as plt
@@ -41,6 +43,7 @@ def loadImageSet(folder=u'E:\data_faces', sampleCount=5): #加载图像集，随
             #subplot(numRows, numCols, plotNum)图表的整个绘图区域被分成 numRows 行和 numCols 列,然后按照从左到右，从上到下的顺序对每个子区域进行编号，左上的子区域的编号为1
             #plt.subplot(1,2,1)
             #plt.imshow(data[0],cmap="gray")
+
             xTrain_pwt = pywt.wavedec2(data[i], 'db2', mode='symmetric', level=3, axes=(-2, -1))
             #plt.subplot(1, 2, 2)
             #plt.imshow(xTrain_pwt[0],cmap="gray")
@@ -50,11 +53,11 @@ def loadImageSet(folder=u'E:\data_faces', sampleCount=5): #加载图像集，随
         #print(xTrain_pwt)
 
         sampleCount=5
-        sample = random.sample(range(10), sampleCount)#random.sample()可以从指定的序列中，随机的截取指定长度的片断，不作原地修改
+        #sample = random.sample(range(10), sampleCount)#random.sample()可以从指定的序列中，随机的截取指定长度的片断，不作原地修改
         #print(sample)
         #print(data)
 
-        #sample=[1,3,5,7,9]
+        sample=[1,3,5,7,9]
         #print(data_pwt)
         trainData.extend([data_pwt[i].ravel() for i in range(10) if i in sample])#ravel将多维数组降位一维####40*5*112*92
         testData.extend([data_pwt[i].ravel() for i in range(10) if i not in sample])#40*5*112*92
@@ -92,7 +95,7 @@ def main():
     xTrain_, yTrain, xTest_, yTest = loadImageSet()# 200*10304
     yTrain.shape=200,40
     yTest.shape=200,40
-    pca1=PCA(n_components=0.8)
+    pca1=PCA(n_components=0.80)
     #hyp.plot(xTrain_,'o')
     xTrain_pca=pca1.fit_transform(xTrain_)# 把原始训练集映射到主成分组成的子空间中
     xTest_pca=pca1.transform(xTest_)# 把原始测试集映射到主成分组成的子空间中
@@ -100,10 +103,10 @@ def main():
     # 放置占位符，用于在计算时接收输入值
     with tf.name_scope('inputs'):
         # define placeholder for inputs to network
-        x = tf.placeholder("float", [None, 14],name='x_in')
+        x = tf.placeholder("float", [None,15],name='x_in')
         y_ = tf.placeholder("float", [None, 40],name='y_in')
     #定义隐含层，输入神经元个数=特征10304
-    l1 = add_layer(x,14,50,n_layer=1 ,activation_function=tf.nn.sigmoid)
+    l1 = add_layer(x,15,50,n_layer=1 ,activation_function=tf.nn.sigmoid)
     #定义输出层。此时的输入就是隐藏层的输出——90，输入有90层（隐藏层的输出层），输出有40层
     y= add_layer(l1,50,40,n_layer=2, activation_function=tf.nn.softmax)
 

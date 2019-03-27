@@ -1,14 +1,13 @@
 '''
 author：zhipeng li
+#2019 年3 月22日
+
 '''
 import numpy as np
 import tensorflow as tf
 import random,os,cv2,glob
 import time
-
 batch_size = 50
-
-
 def loadImageSet(folder=u'data_faces', sampleCount=5): #加载图像集，随机选择sampleCount张图片用于训练
     trainData = []; testData = [];yTrain2=[];yTest2=[]
     #print(yTest)
@@ -76,8 +75,6 @@ def main():
     keep_prob=tf.placeholder(tf.float32)
     x_image=tf.reshape(x,[-1,112,92,1])# -1表示任意数量的样本数，chanel黑白为1
     print(x_image.shape)
-
-
     ####conv1 layer###
     W_conv1=weight_variable([32,32,1,32])#patch 32x32,in size=1,0utsize=32
     b_conv1=bias_variable([32])
@@ -97,7 +94,7 @@ def main():
     # [n_samples, 28, 23, 64] ->> [n_samples, 28*23*64]
     h_pool2_fat=tf.reshape(h_pool2,[-1,28*23*64])
     h_fc1=tf.nn.sigmoid(tf.matmul(h_pool2_fat,W_fc1)+b_fc1)
-    h_fc1_drop=tf.nn.dropout(h_fc1,keep_prob)  ###dropout防止过拟合###
+    h_fc1_drop=tf.nn.dropout(h_fc1,keep_prob)  ###dropout防止过拟合###\
 
     ##func2 layer##
     W_fc2 = weight_variable([800, 40])
@@ -115,7 +112,7 @@ def main():
         result = sess.run(accuracy, feed_dict={x: v_xs, y_: v_ys, keep_prob: 1})
         return result
 
-    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.7)
+    gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.8)
     sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
     sess.run(tf.global_variables_initializer())
     for i in range(10000):
@@ -132,10 +129,7 @@ def main():
             print("识别率:%.2f%%" % ((sess.run(accuracy, feed_dict={x: np.matrix(xTest_ / 255), y_: np.matrix(yTest),
                                                                  keep_prob: 1})) * 100))
             # 计算正确预测项的比例，因为tf.equal返回的是布尔值，使用tf.cast可以把布尔值转换成浮点数，tf.reduce_mean是求平均值
-
             # 在session中启动accuracy，输入是orl中的测试集
-
-
             #print(sess.run(cross_entropy, feed_dict={x: np.matrix((batch_x)), y_: np.matrix(batch_y)}))
             #if(sess.run(cross_entropy, feed_dict={x: np.matrix((batch_x)), y_: np.matrix(batch_y)})==0):
                # break
@@ -146,8 +140,6 @@ def main():
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
     # 在session中启动accuracy，输入是orl中的测试集
     print("识别率:%.2f%%" %((sess.run(accuracy, feed_dict={x:np.matrix(xTest_/255), y_: np.matrix(yTest),keep_prob: 1}))*100))
-
-
 
 if __name__ == '__main__':
     main()

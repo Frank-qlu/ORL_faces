@@ -5,7 +5,7 @@ import random,os,cv2,glob
 from sklearn.decomposition import PCA
 import hypertools as hyp
 import time
-
+#2019 年3 月22日
 batch_size = 80
 
 def loadImageSet(folder=u'E:\data_faces', sampleCount=5): #加载图像集，随机选择sampleCount张图片用于训练
