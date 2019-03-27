@@ -32,12 +32,12 @@
 
 <p>###项目预览###<p></br></br>
 
-![Image text](https://github.com/Frank-qlu/ORL_faces/tree/master/images/1.png)
-![Image text](https://github.com/Frank-qlu/ORL_faces/tree/master/images/2.png)
-![Image text](https://github.com/Frank-qlu/ORL_faces/tree/master/images/3.png)
-![Image text](https://github.com/Frank-qlu/ORL_faces/tree/master/images/4.png)
-![Image text](https://github.com/Frank-qlu/ORL_faces/tree/master/images/5.png)
-![Image text](https://github.com/Frank-qlu/ORL_faces/tree/master/images/6.png)
-![Image text](https://github.com/Frank-qlu/ORL_faces/tree/master/images/7.png)
-![Image text](https://github.com/Frank-qlu/ORL_faces/tree/master/images/8.png)
-![Image text](https://github.com/Frank-qlu/ORL_faces/tree/master/images/9.png)
+![Image text](https://github.com/Frank-qlu/ORL_faces/blob/master/images/1.png)
+![Image text](https://github.com/Frank-qlu/ORL_faces/blob/master/images/2.png)
+![Image text](https://github.com/Frank-qlu/ORL_faces/blob/master/images/3.png)
+![Image text](https://github.com/Frank-qlu/ORL_faces/blob/master/images/4.png)
+![Image text](https://github.com/Frank-qlu/ORL_faces/blob/master/images/5.png)
+![Image text](https://github.com/Frank-qlu/ORL_faces/blob/master/images/6.png)
+![Image text](https://github.com/Frank-qlu/ORL_faces/blob/master/images/7.png)
+![Image text](https://github.com/Frank-qlu/ORL_faces/blob/master/images/8.png)
+![Image text](https://github.com/Frank-qlu/ORL_faces/blob/master/images/9.png)
