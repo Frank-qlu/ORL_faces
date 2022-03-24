@@ -26,10 +26,6 @@
 </tr>
 </table>
            
-###
-<p>该项目适合新手学习和交流，如果有任何问题请联系我Email: lizhipengqilu@gmail.com <p></br>
-<p>同时希望大家提出宝贵意见，欢迎学习交流，如果你喜欢该项目，请收藏或者fork一下，你的主动将是我前行的动力<p></br></br>
-
 <p>###项目预览###<p></br></br>
 
 ![Image text](https://github.com/Frank-qlu/ORL_faces/blob/master/images/1.png)
